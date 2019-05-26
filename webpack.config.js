@@ -15,8 +15,7 @@ module.exports = {
   },
 
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.tsx?$/,
         loader: "ts-loader"
       },
@@ -49,7 +48,6 @@ module.exports = {
   devServer: {
     compress: false,
     contentBase: path.join(__dirname, 'dist'),
-    port: 3000,
-    open: "Google Chrome"
+    port: 3000
   }
 };
