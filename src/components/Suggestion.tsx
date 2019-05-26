@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { Place, placeDescription } from '../models/place';
 
+export const itemHeight = 50
+
 export interface ItemProps {
   active?: boolean;
 }
@@ -14,7 +16,7 @@ const Item = styled.li`
   display: flex;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  height: 50px;
+  height: ${itemHeight}px;
   justify-content: space-between;
   padding: 16px 24px 15px 22px;
   width: 100%;

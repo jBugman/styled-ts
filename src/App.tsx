@@ -23,11 +23,12 @@ const Background = styled.div`
 const fakeContentPadding = 10; // form shadow fix
 
 const Content = styled.div`
+  box-sizing: border-box;
+  height: 100%;
   margin: 0 auto;
   overflow: auto;
-  width: ${1080 + 2 * fakeContentPadding}px;
   padding: 0 ${fakeContentPadding}px;
-  box-sizing: border-box;
+  width: ${1080 + 2 * fakeContentPadding}px;
 `
 
 const Title = styled.h1`
