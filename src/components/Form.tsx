@@ -30,12 +30,12 @@ const Button = styled.button`
   width: 100%;
 `
 
-export interface FormProps {
+const doNothing = (e: React.FormEvent<HTMLFormElement>) => {
+  console.log('fake submit'); // FIXME: console
+  e.preventDefault();
 }
 
-const doNothing = (e) => e.preventDefault();
-
-export const Form = (props: FormProps) =>
+export const Form = () =>
   <form onSubmit={doNothing}>
     <Card>
       <Select label="Origin" placeholder="i.e. Tegel Berlin" />

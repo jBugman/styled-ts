@@ -1,0 +1,177 @@
+[{
+    "country": "United Kingdom",
+    "iata": "LON",
+    "country_iata": "GB",
+    "rating": 3,
+    "name": "London",
+    "location": {
+      "lon": -0.177416,
+      "lat": 51.150836
+    },
+    "type": "city",
+    "nearby": null
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "LON",
+    "iata": "STN",
+    "city": "London",
+    "country_iata": "GB",
+    "rating": 3,
+    "name": "Stansted",
+    "location": {
+      "lon": 0.262703,
+      "lat": 51.889267
+    },
+    "type": "airport",
+    "nearby": null
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "LON",
+    "iata": "LGW",
+    "city": "London",
+    "country_iata": "GB",
+    "rating": 3,
+    "name": "Gatwick",
+    "location": {
+      "lon": -0.177416,
+      "lat": 51.150836
+    },
+    "type": "airport",
+    "nearby": null
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "LON",
+    "iata": "LCY",
+    "city": "London",
+    "country_iata": "GB",
+    "rating": 3,
+    "name": "City",
+    "location": {
+      "lon": 0.049365,
+      "lat": 51.50438
+    },
+    "type": "airport",
+    "nearby": null
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "LON",
+    "iata": "LHR",
+    "city": "London",
+    "country_iata": "GB",
+    "rating": 3,
+    "name": "Heathrow",
+    "location": {
+      "lon": -0.453566,
+      "lat": 51.469603
+    },
+    "type": "airport",
+    "nearby": null
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "LON",
+    "iata": "LTN",
+    "city": "London",
+    "country_iata": "GB",
+    "rating": 3,
+    "name": "Luton",
+    "location": {
+      "lon": -0.376232,
+      "lat": 51.879768
+    },
+    "type": "airport",
+    "nearby": null
+  },
+  {
+    "country": "China",
+    "city_iata": "KWE",
+    "iata": "KWE",
+    "city": "Guiyang",
+    "country_iata": "CN",
+    "rating": 3,
+    "name": "Guiyang",
+    "location": {
+      "lon": 106.79598,
+      "lat": 26.544217
+    },
+    "type": "airport",
+    "nearby": null
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "SEN",
+    "iata": "SEN",
+    "city": "Southend",
+    "country_iata": "GB",
+    "rating": 2,
+    "name": "Southend",
+    "location": {
+      "lon": 0.698248,
+      "lat": 51.57265
+    },
+    "type": "airport",
+    "nearby": {
+      "country": "United Kingdom",
+      "city_iata": "LON",
+      "distance": 45.5154404014905,
+      "iata": "LCY",
+      "city": "London",
+      "country_iata": "GB",
+      "rating": 3,
+      "name": "City",
+      "location": {
+        "lon": 0.049365,
+        "lat": 51.50438
+      },
+      "type": "airport"
+    }
+  },
+  {
+    "country": "United Kingdom",
+    "city_iata": "LON",
+    "iata": "BQH",
+    "city": "London",
+    "country_iata": "GB",
+    "rating": 1,
+    "name": "Biggin Hill",
+    "location": {
+      "lon": 0.033333,
+      "lat": 51.333333
+    },
+    "type": "airport",
+    "nearby": {
+      "country": "United Kingdom",
+      "city_iata": "LON",
+      "distance": 19.052046978158405,
+      "iata": "LCY",
+      "city": "London",
+      "country_iata": "GB",
+      "rating": 3,
+      "name": "City",
+      "location": {
+        "lon": 0.049365,
+        "lat": 51.50438
+      },
+      "type": "airport"
+    }
+  },
+  {
+    "country": "South Africa",
+    "city_iata": "LDZ",
+    "iata": "LDZ",
+    "city": "Londolozi",
+    "country_iata": "ZA",
+    "rating": 1,
+    "name": "Londolozi",
+    "location": {
+      "lon": 31.505367,
+      "lat": -24.809691
+    },
+    "type": "airport",
+    "nearby": null
+  }
+]

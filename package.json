@@ -11,9 +11,11 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
+    "@types/debounce": "^1.2.0",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/styled-components": "^4.1.15",
+    "debounce": "^1.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.2.0",
