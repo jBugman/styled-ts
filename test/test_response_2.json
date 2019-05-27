@@ -1,0 +1,123 @@
+[{
+    "country": "Russian Federation",
+    "city_iata": "MOW",
+    "iata": "DME",
+    "city": "Moscow",
+    "country_iata": "RU",
+    "rating": 3,
+    "name": "Domodedovo",
+    "location": {
+        "lon": 37.899494,
+        "lat": 55.414566
+    },
+    "type": "airport",
+    "nearby": null
+}, {
+    "country": "Russian Federation",
+    "city_iata": "MOW",
+    "iata": "VKO",
+    "city": "Moscow",
+    "country_iata": "RU",
+    "rating": 3,
+    "name": "Vnukovo",
+    "location": {
+        "lon": 37.292098,
+        "lat": 55.60315
+    },
+    "type": "airport",
+    "nearby": null
+}, {
+    "country": "Russian Federation",
+    "city_iata": "MOW",
+    "iata": "SVO",
+    "city": "Moscow",
+    "country_iata": "RU",
+    "rating": 3,
+    "name": "Sheremetyevo International",
+    "location": {
+        "lon": 37.416574,
+        "lat": 55.966324
+    },
+    "type": "airport",
+    "nearby": null
+}, {
+    "country": "Russian Federation",
+    "iata": "MOW",
+    "country_iata": "RU",
+    "rating": 3,
+    "name": "Moscow",
+    "location": {
+        "lon": 37.899494,
+        "lat": 55.414566
+    },
+    "type": "city",
+    "nearby": null
+}, {
+    "country": "Lesotho",
+    "city_iata": "MSU",
+    "iata": "MSU",
+    "city": "Maseru",
+    "country_iata": "LS",
+    "rating": 2,
+    "name": "Maseru",
+    "location": {
+        "lon": 27.505556,
+        "lat": -29.301389
+    },
+    "type": "airport",
+    "nearby": null
+}, {
+    "country": "Argentina",
+    "city_iata": "CRD",
+    "iata": "CRD",
+    "city": "Comodoro Rivadavia",
+    "country_iata": "AR",
+    "rating": 1,
+    "name": "Comodoro Rivadavia",
+    "location": {
+        "lon": -67.469738,
+        "lat": -45.789323
+    },
+    "type": "airport",
+    "nearby": null
+}, {
+    "country": "United States",
+    "city_iata": "PUW",
+    "iata": "PUW",
+    "city": "Pullman",
+    "country_iata": "US",
+    "rating": 1,
+    "name": "Pullman",
+    "location": {
+        "lon": -117.105,
+        "lat": 46.744722
+    },
+    "type": "airport",
+    "nearby": null
+}, {
+    "country": "United States",
+    "iata": "MWH",
+    "country_iata": "US",
+    "rating": 0,
+    "name": "Moses Lake",
+    "location": {
+        "lon": -119.283333,
+        "lat": 47.133333
+    },
+    "type": "city",
+    "nearby": {
+        "country": "United States",
+        "city_iata": "EAT",
+        "distance": 75.78279893370406,
+        "iata": "EAT",
+        "city": "Wenatchee",
+        "country_iata": "US",
+        "rating": 1,
+        "name": "Wenatchee",
+        "location": {
+            "lon": -120.207778,
+            "lat": 47.399722
+        },
+        "type": "airport"
+    }
+}]

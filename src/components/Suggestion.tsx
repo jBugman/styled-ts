@@ -5,8 +5,9 @@ import { Place, placeDescription } from '../models/place';
 
 export const itemHeight = 50
 
-export interface ItemProps {
+interface ItemProps {
   active?: boolean;
+  indented?: boolean;
 }
 
 const Item = styled.li`
@@ -18,7 +19,7 @@ const Item = styled.li`
   font-size: 16px;
   height: ${itemHeight}px;
   justify-content: space-between;
-  padding: 16px 24px 15px 22px;
+  padding: 18px 24px 15px ${(props: ItemProps) => props.indented ? 42 : 22}px;
   width: 100%;
 `
 
@@ -33,20 +34,21 @@ const Country = styled.span`
 
 const Code = styled.div`
   color: #868686;
+  font-size: 14px;
   font-weight: 500;
-  height: 19px;
+  height: 16px;
 `
 
 export interface SuggestionProps {
   onSelect?: (text: string) => void;
 }
 
-interface Props extends ItemProps, SuggestionProps {
+interface Props extends SuggestionProps, ItemProps {
   place: Place;
 }
 
 export const Suggestion = ({
-  active = false,
+  active,
   onSelect,
   place,
   ...props

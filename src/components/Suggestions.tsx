@@ -30,6 +30,7 @@ export const Suggestions = ({
     {places.map((place, index) =>
       <Suggestion
         active={activeIndex === index}
+        indented={place.nested}
         key={`place-${index}`}
         place={place}
         onSelect={onSelect}

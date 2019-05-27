@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@types/debounce": "^1.2.0",
+    "@types/ramda": "^0.26.8",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/styled-components": "^4.1.15",
     "debounce": "^1.2.0",
+    "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.2.0",

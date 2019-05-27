@@ -3,17 +3,19 @@ import styled from 'styled-components';
 import { debounce } from 'debounce';
 
 import { Suggestions, SuggestionsProps } from './Suggestions';
-import { placeDescription } from '../models/place';
+import { groupByCity, placeDescription } from '../models/place';
 
-const testPlaces = require('../../test/test_response.json'); // FIXME: inline json
+const testPlaces = require('../../test/test_response_2.json'); // FIXME: inline json
 
 const MIN_SYMBOLS_CUTOFF = 3
-const SUGGESTIONS_DELAY = 1000
+const SUGGESTIONS_DELAY = 300
 
 const Field = styled.div`
-  height: 60px;
+  box-sizing: border-box;
   display: inline-flex;
   flex-direction: column;
+  height: 60px;
+  padding-right: 25px;
   position: relative;
   width: 440px;
 `
@@ -101,7 +103,7 @@ export class Select extends React.Component<SelectProps, State> {
     console.log('showing suggestions');  // FIXME: console
     this.setState({
       activeIndex: 0,
-      places: testPlaces,
+      places: groupByCity(testPlaces),
       showSuggestions: true,
     });
   }
@@ -153,6 +155,10 @@ export class Select extends React.Component<SelectProps, State> {
       const selectedPlace = this.state.places[this.state.activeIndex];
       const text = placeDescription(selectedPlace);
       this.handleSuggestionSelect(text);
+    }
+    // esc
+    if (e.keyCode === 27) {
+      this.setState({ showSuggestions: false });
     }
     console.log('keypress', e.key, e.keyCode);  // FIXME: console
   }
