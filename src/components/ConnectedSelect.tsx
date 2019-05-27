@@ -3,8 +3,6 @@ import * as React from 'react';
 import { Select, SelectProps } from './Select'
 import { Place, groupByCity } from '../models/place';
 
-const testPlaces = require('../../test/test_response_2.json'); // FIXME: inline json
-
 interface Props extends SelectProps { }
 
 interface State {
@@ -24,11 +22,10 @@ export class ConnectedSelect extends React.Component<Props, State> {
   }
 
   handleLoadSuggestionsSuccess = (places: Place[]) => {
-    console.log('handleLoadSuggestionsSuccess');
     this.setState({
       loading: false,
-      places,
-      showSuggestions: true,
+      places: groupByCity(places),
+      showSuggestions: places.length > 0,
     });
   }
 
@@ -38,9 +35,15 @@ export class ConnectedSelect extends React.Component<Props, State> {
   }
 
   loadSuggestions = () => {
-    const places = groupByCity(testPlaces); // TODO: an actual request
-    this.setState({ loading: true });
-    setTimeout(() => this.handleLoadSuggestionsSuccess(places), 1000);
+    const query = this.state.text;
+    if (!query) {
+      return;
+    }
+    this.setState({ loading: true })
+    fetch(`https://places-dev.cteleport.com/airports?q=${query}&n=10`).
+      then(resp => resp.json()).
+      then(this.handleLoadSuggestionsSuccess).
+      catch(this.handleLoadSuggestionsFailure)
   }
 
   handleTextChange = (text: string) => {
