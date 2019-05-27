@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { debounce } from 'debounce';
 
-import { Suggestions, SuggestionsProps } from './Suggestions';
+import { Suggestions } from './Suggestions';
 import { Place, placeDescription } from '../models/place';
 
 const MIN_SYMBOLS_CUTOFF = 3
@@ -97,14 +97,13 @@ interface State {
 }
 
 export class Select extends React.Component<Props, State> {
-
-  state: State = {
+  public state: State = {
     activeIndex: 0,
   }
 
-  loadSuggestions = debounce(this.props.onSuggestionsLoad, SUGGESTIONS_DELAY)
+  private loadSuggestions = debounce(this.props.onSuggestionsLoad, SUGGESTIONS_DELAY)
 
-  handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  private handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.currentTarget.value || '';
     e.preventDefault();
     this.props.onTextChange(text);
@@ -116,19 +115,19 @@ export class Select extends React.Component<Props, State> {
     }
   }
 
-  handleSuggestionSelect = (text: string) => {
+  private handleSuggestionSelect = (text: string) => {
     this.setState({ activeIndex: 0 });
     this.props.onTextChange(text);
     this.props.onSuggestionsCancel();
   }
 
-  handleClear = () => {
+  private handleClear = () => {
     this.setState({ activeIndex: 0 });
     this.props.onTextChange('');
     this.props.onSuggestionsCancel();
   }
 
-  handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  private handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!this.props.showSuggestions) {
       return;
     }
@@ -162,7 +161,7 @@ export class Select extends React.Component<Props, State> {
     }
   }
 
-  render() {
+  public render() {
     const {
       label,
       placeholder,
@@ -170,9 +169,9 @@ export class Select extends React.Component<Props, State> {
       showSuggestions,
       text,
       // omit
-      onSuggestionsCancel,
-      onSuggestionsLoad,
-      onTextChange,
+      onSuggestionsCancel, // eslint-disable-line @typescript-eslint/no-unused-vars
+      onSuggestionsLoad, // eslint-disable-line @typescript-eslint/no-unused-vars
+      onTextChange, // eslint-disable-line @typescript-eslint/no-unused-vars
       //
       ...props
     } = this.props;

@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import { Form } from './components/Form';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const bgImage = require('./static/background.jpg');
 
 const GlobalStyle = createGlobalStyle`
@@ -11,14 +12,14 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root {
     height: 100%;
   }
-`
+`;
 
 const Background = styled.div`
   width: 100%;
   height: 100%;
   background: top center url(${bgImage}) #234f77 no-repeat;
   background-size: cover;
-`
+`;
 
 const fakeContentPadding = 10; // form shadow fix
 
@@ -29,7 +30,7 @@ const Content = styled.div`
   overflow: auto;
   padding: 0 ${fakeContentPadding}px;
   width: ${1080 + 2 * fakeContentPadding}px;
-`
+`;
 
 const Title = styled.h1`
   color: #ffffff;
@@ -42,9 +43,9 @@ const Title = styled.h1`
   width: 221px;
   /**/
   margin: 84px 0 62px;
-`
+`;
 
-export const App = () =>
+export const App = () => (
   <>
     <GlobalStyle />
     <Background>
@@ -54,3 +55,4 @@ export const App = () =>
       </Content>
     </Background>
   </>
+);

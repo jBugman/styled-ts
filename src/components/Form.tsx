@@ -13,7 +13,7 @@ export const Card = styled.div`
   box-sizing: border-box;
   /**/
   margin-bottom: 50px;
-`
+`;
 
 const Button = styled.button`
   background-color: #16a6ff;
@@ -28,14 +28,14 @@ const Button = styled.button`
   outline: none;
   text-align: center;
   width: 100%;
-`
+`;
 
 const doNothing = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   console.log('fake submit');
-}
+};
 
-export const Form = () =>
+export const Form = () => (
   <form onSubmit={doNothing}>
     <Card>
       <ConnectedSelect label="Origin" placeholder="i.e. Tegel Berlin" />
@@ -43,3 +43,4 @@ export const Form = () =>
     </Card>
     <Button>Search</Button>
   </form>
+);

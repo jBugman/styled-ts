@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import * as R from 'ramda';
 
-import { Place, groupByCity } from '../src/models/place';
+import { groupByCity } from '../src/models/place';
 
 const response1 = require('./test_response.json');
 const response2 = require('./test_response_2.json');
