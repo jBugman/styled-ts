@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
-import { Select } from './Select';
+import { ConnectedSelect } from './ConnectedSelect';
 
 export const Card = styled.div`
   width: 100%;
@@ -31,15 +31,15 @@ const Button = styled.button`
 `
 
 const doNothing = (e: React.FormEvent<HTMLFormElement>) => {
-  console.log('fake submit'); // FIXME: console
   e.preventDefault();
+  console.log('fake submit');
 }
 
 export const Form = () =>
   <form onSubmit={doNothing}>
     <Card>
-      <Select label="Origin" placeholder="i.e. Tegel Berlin" />
-      <Select label="Destination" placeholder="i.e. Schiphol Amsterdam" defaultValue="LON" />
+      <ConnectedSelect label="Origin" placeholder="i.e. Tegel Berlin" />
+      <ConnectedSelect label="Destination" placeholder="i.e. Schiphol Amsterdam" />
     </Card>
     <Button>Search</Button>
   </form>

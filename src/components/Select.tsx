@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { debounce } from 'debounce';
 
 import { Suggestions, SuggestionsProps } from './Suggestions';
-import { groupByCity, placeDescription } from '../models/place';
-
-const testPlaces = require('../../test/test_response_2.json'); // FIXME: inline json
+import { Place, placeDescription } from '../models/place';
 
 const MIN_SYMBOLS_CUTOFF = 3
 const SUGGESTIONS_DELAY = 300
@@ -85,56 +83,57 @@ export interface SelectProps {
   placeholder?: string;
 }
 
-interface State extends SuggestionsProps {
+interface Props extends SelectProps {
+  onSuggestionsCancel: () => void;
+  onSuggestionsLoad: () => void;
+  onTextChange: (text: string) => void;
+  places: Place[],
   showSuggestions: boolean;
   text: string;
 }
 
-export class Select extends React.Component<SelectProps, State> {
+interface State {
+  activeIndex: number;
+}
+
+export class Select extends React.Component<Props, State> {
 
   state: State = {
     activeIndex: 0,
-    places: [],
-    showSuggestions: false,
-    text: this.props.defaultValue || '',
   }
 
-  showSuggestions = () => {
-    console.log('showing suggestions');  // FIXME: console
-    this.setState({
-      activeIndex: 0,
-      places: groupByCity(testPlaces),
-      showSuggestions: true,
-    });
-  }
+  loadSuggestions = debounce(this.props.onSuggestionsLoad, SUGGESTIONS_DELAY)
 
-  loadSuggestions = debounce(this.showSuggestions, SUGGESTIONS_DELAY)
-
-  onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.currentTarget.value || '';
     e.preventDefault();
-    console.log('text changed to:', text); // FIXME: console
+    this.props.onTextChange(text);
     if (text.length >= MIN_SYMBOLS_CUTOFF) {
-      this.setState({ text });
       this.loadSuggestions();
     } else {
-      this.setState({ text, showSuggestions: false });
       this.loadSuggestions.clear();
+      this.props.onSuggestionsCancel();
     }
   }
 
   handleSuggestionSelect = (text: string) => {
-    this.setState({ text, showSuggestions: false });
+    this.setState({ activeIndex: 0 });
+    this.props.onTextChange(text);
+    this.props.onSuggestionsCancel();
   }
 
   handleClear = () => {
-    this.handleSuggestionSelect('');
+    this.setState({ activeIndex: 0 });
+    this.props.onTextChange('');
+    this.props.onSuggestionsCancel();
   }
 
   handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!this.state.showSuggestions) {
+    if (!this.props.showSuggestions) {
       return;
     }
+    // console.log('keypress', e.key, e.keyCode);
+    const places = this.props.places;
     var idx = this.state.activeIndex;
     // up
     if (e.keyCode === 38) {
@@ -143,52 +142,59 @@ export class Select extends React.Component<SelectProps, State> {
     }
     // down
     if (e.keyCode === 40) {
-      idx = Math.min(Math.max(this.state.places.length - 1, 0), idx + 1);
+      idx = Math.min(Math.max(places.length - 1, 0), idx + 1);
       this.setState({ activeIndex: idx });
     }
     // enter
     if (e.keyCode === 13) {
       // It should actually react to space, but for now it complicates things too much
-      if (this.state.places.length === 0) {
+      if (places.length === 0) {
         return;
       }
-      const selectedPlace = this.state.places[this.state.activeIndex];
+      e.preventDefault();
+      const selectedPlace = places[this.state.activeIndex];
       const text = placeDescription(selectedPlace);
       this.handleSuggestionSelect(text);
     }
     // esc
     if (e.keyCode === 27) {
-      this.setState({ showSuggestions: false });
+      this.props.onSuggestionsCancel();
     }
-    console.log('keypress', e.key, e.keyCode);  // FIXME: console
   }
 
   render() {
     const {
       label,
-      placeholder
+      placeholder,
+      places,
+      showSuggestions,
+      text,
+      // omit
+      onSuggestionsCancel,
+      onSuggestionsLoad,
+      onTextChange,
+      //
+      ...props
     } = this.props;
 
-    const showDeleteButton = !!this.state.text;
-
     return (
-      <Field>
+      <Field {...props}>
         <Label>{label}</Label>
         <Input
           type="text"
-          value={this.state.text}
-          onChange={this.onTextChange}
+          value={text}
+          onChange={this.handleTextChange}
           onKeyDown={this.handleKeyPress}
           placeholder={placeholder}
         />
-        {showDeleteButton &&
+        {!!text &&
           <DeleteButton onClick={this.handleClear}>✕</DeleteButton> // TODO: use an actual svg asset?
         }
-        <Underline active={this.state.showSuggestions} />
-        {this.state.showSuggestions &&
+        <Underline active={showSuggestions} />
+        {showSuggestions &&
           <PositionedSuggestions
             activeIndex={this.state.activeIndex}
-            places={this.state.places}
+            places={places}
             onSelect={this.handleSuggestionSelect}
           />}
       </Field>
